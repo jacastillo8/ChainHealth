@@ -1,0 +1,99 @@
+<%- include ("partials/header") %>
+
+<h1><i class="fas fa-mobile-alt"></i> Device Manager</h1>
+<br>
+<div>
+    <label>Device Name:</label>
+    <input class="form-control" id="search-query" type=text placeholder="Search for Location...">
+</div>
+<br>
+<div class="spacer"></div>
+<br>
+<h4><strong>Pending</strong></h4>
+<table class="table table-bordered" id="pending-table" data-name="devices">
+    <thead>
+        <th>MQTT ID</th>
+        <th>Address</th>
+        <th>Request Date</th>
+        <th>Join Date</th>
+        <th>Location</th>
+    </thead>
+    <tbody>
+    <% if (pending.length !== 0) { %>
+        <% pending.forEach(function(device) { %> 
+            <tr class="hoverable">
+                <td class="client"><%= device.client %> </td>
+                <td class="address"><%= device.address %></td>
+                <td class="request"><%= device.requestDate %></td>
+                <td class="join"><%= device.joinDate %></td>
+                <td class="loc"><input class="form-control" type="text"></td>
+                <td style="text-align: center">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success btn-sm" id="approve">Approve</button>
+                        <button type="submit" class="btn btn-warning btn-sm" id="reject">Reject</button>
+                    </div>
+                </td>
+            </tr>
+        <% }); } %> 
+
+    </tbody>
+</table>
+<br>
+<br>
+<h4><strong>Approved</strong></h4>
+<table class="table table-bordered" id="approved-table" data-name="devices">
+    <thead>
+        <th>MQTT ID</th>
+        <th>Address</th>
+        <th>Request Date</th>
+        <th>Join Date</th>
+        <th>Location</th>
+        <th>Organization</th>
+    </thead>
+    <tbody>
+    <% if (approved.length !== 0) { %>
+        <% approved.forEach(function(device) { %> 
+            <tr class="hoverable">
+                <td class="client"><%= device.client %> </td>
+                <td class="address"><%= device.address %></td>
+                <td class="request"><%= device.requestDate %></td>
+                <td class="join"><%= device.joinDate %></td>
+                <td class="loc"><%= device.location %></td>
+                <td class="org"><%= device.org %></td>
+                <td style="text-align: center">
+                    <button type="button" class="btn btn-danger btn-sm remove">Remove</button>
+                </td>
+            </tr>
+        <% }); } %> 
+    </tbody>
+</table>
+<br>
+<br>
+<h4><strong>Rejected</strong></h4>
+<table class="table table-bordered" id="rejected-table" data-name="devices">
+    <thead>
+        <th>MQTT ID</th>
+        <th>Address</th>
+        <th>Request Date</th>
+        <th>Organization</th>
+    </thead>
+    <tbody>
+    <% if (rejected.length !== 0) { %>
+        <% rejected.forEach(function(device) { %> 
+            <tr class="hoverable">
+                <td class="client"><%= device.client %> </td>
+                <td class="address"><%= device.address %></td>
+                <td class="request"><%= device.requestDate %></td>
+                <td class="org"><%= device.org %></td>
+                <td style="text-align: center">
+                    <button type="button" class="btn btn-danger btn-sm remove">Remove</button>
+                </td>
+            </tr>
+        <% }); %> 
+    </tbody>
+</table>
+<%  } %>
+
+<script src="/js/mqtt_setup.js"></script>
+
+<%- include ("partials/footer") %> 

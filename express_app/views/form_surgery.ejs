@@ -1,0 +1,50 @@
+<%- include ("partials/header") %>
+
+<h1><i class="fas fa-syringe"></i> New Surgery Entry</h1>
+<br>
+<br>
+<form name='info' onsubmit="return formValidation()" method="POST" action="/api/surgery">
+    <div class='form-row container'>
+        <div id="error"></div>
+        <div class="form-group col-md-12">
+            <label for="pid">Patient ID: </label>
+            <input class='form-control' id="pid" name="pid" type='text' placeholder="<%= pid %>" value="<%= pid %>" readonly>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-6">
+            <label for="name">Surgery Name: </label>
+            <input class='form-control required' id="name" name="name" type='text' autocomplete="off">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="diagnosis">Diagnosis: </label>
+            <input class='form-control required' id="diagnosis" name="diagnosis" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-12">
+            <label for="date">Date: </label>
+            <div class="input-group date datetimepicker">
+                <input class='form-control required' id="date" name="date" placeholder="MM/DD/YYYY" type='text' readonly>
+                <span class="input-group-addon"> 
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-12">
+            <button type='submit' class="btn btn-success btn-block">Submit</button>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-12">
+            <button type="button" class="btn btn-danger btn-block" id="reset">Reset Form</button>
+        </div>
+    </div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/new_event.js"></script>
+
+<%- include ("partials/footer") %> 

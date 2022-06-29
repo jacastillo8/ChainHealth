@@ -1,0 +1,42 @@
+<%- include ("partials/header") %>
+
+
+<h1><i class="fas fa-user-injured"></i> Patients</h1>
+<br>
+<div>
+    <label>Patient Name:</label>
+    <input class="form-control" id="search-query" type=text placeholder="Search patient..." autocomplete="off">
+</div>
+<br>
+<div class="spacer"></div>
+<br>
+<table class="table table-bordered" id="patient-table">
+    <thead>
+        <th>PID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>City</th>
+    </thead>
+    <tbody>
+        <% patients.forEach(function(patient) {
+            let name = "";
+            if (patient.mname) {
+                name = patient.fname + " " + patient.mname + " " + patient.lname;
+            } else {
+                name = patient.fname + " " + patient.lname;  
+            } 
+        %> 
+            <tr class="hoverable" data-href="/patient/display/<%= patient.id %>/overview">
+                <td><%= patient.pid %> </td>
+                <td class="name-filter"><%= name %></td>
+                <td><%= patient.sex %></td>
+                <td><%= patient.city + ", " + patient.state %></td>
+            </tr>
+        <% }); %> 
+
+    </tbody>
+</table>
+
+<script src="/js/table_patients.js" type="text/javascript"></script>
+
+<%- include ("partials/footer") %> 

@@ -1,0 +1,126 @@
+<%- include ("partials/header") %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+<h1><i class="fas fa-link"></i> Blockchain</h1>
+<br>
+<div class="spacer"></div>
+<br>
+<div id="patient-data" class="container">
+  <ul class="nav nav-pills">
+      <li class="active"><a href="#a" data-toggle="tab">Overview</a></li>
+      <li><a href="#b" data-toggle="tab">Query</a></li>
+  </ul>
+  <div class="tab-content">
+      <div class="tab-pane active" id="a">
+        <br>
+        <div class="row">
+          <div class="col-md-3 col-md-3">
+            <br>
+            <br>
+            <br>
+            <h2><i class="fas fa-calculator"></i> Statistics</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Invoke(s)</th>
+                    <th scope="col">Query(s)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Max</th>
+                    <td class="invoke"></td>
+                    <td class="query"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Min</th>
+                    <td class="invoke"></td>
+                    <td class="query"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mean</th>
+                    <td class="invoke"></td>
+                    <td class="query"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">St. Dev.</th>
+                    <td class="invoke"></td>
+                    <td class="query"></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="col-md-9 col-md-9">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <h2 class="panel-title">Delay Tracking</h2>
+                  </div>
+                  <div class="panel-content text-center">
+                      <canvas id="performance" class="chart"></canvas>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 col-md-6">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <h2 class="panel-title">Transactions per Organization</h2>
+                  </div>
+                  <div class="panel-content text-center">
+                      <canvas class="chart tx-info"></canvas>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-md-6">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <h2 class="panel-title">Usage Distribution</h2>
+                  </div>
+                  <div class="panel-content text-center">
+                      <canvas class="chart tx-info"></canvas>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="tab-pane" id="b">
+        <br>
+        <div id="error"></div>
+        <form id='query'>
+          <div class="form-row container">
+            <div class="form-group col-md-8">
+                <label for="list">Search for: </label>
+                <input list="data-list" type="text" class="form-control required" name="list" id="list" autocomplete="off">
+                <datalist id="data-list">
+                </datalist>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="search">Type: </label>
+              <select class="form-control required" id="search" name="search">
+                <option value="">Choose...</option>
+                <% transactions.forEach(function(tx) { %>
+                  <option value="<%= tx %>"><%= tx %></option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
+          <div class="form-row container">
+            <div class="form-group col-md-11">
+              <button type="button" class="btn btn-primary btn-block" id="submit">Search</button>
+            </div>
+          </div>
+          <div class="form-row container">
+            <div class="form-group col-md-11">
+              <a href="#" class="btn btn-primary btn-block disabled" role="button" id="download">Download</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+<script src="/js/chainmed_auditor.js" type="text/javascript"></script>
+
+<%- include ("partials/footer") %> 

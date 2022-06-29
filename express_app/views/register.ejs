@@ -1,0 +1,40 @@
+<%- include ("partials/header") %>
+
+<h1><i class="fas fa-user-plus"></i> Register</h1>
+<br>
+<br>
+<form class="form" onsubmit="return formValidation()" method="POST" action="/users/register" id="reg-nav">
+    <div id="error"></div>
+    <div class="form-group">
+        <label for="name"> Full Name:</label>
+        <input type="text" class="form-control required" id="name" name="name" placeholder="John Doe">
+    </div>
+    <div class="form-group">
+        <label for="org">Organization:</label>
+        <select class="form-control required" id="org" name="org">
+            <option value="">Choose...</option>
+            <% orgs.forEach(function(org) { %>
+                <option value="<%= org.name %>"><%= org.display %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control required" id="username" name="usr" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control required" id="password" name="pass" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="password2">Confirm Password:</label>
+        <input type="password" class="form-control required" id="password2" name="pass2" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </div>
+</form>
+
+<script src="/js/register.js"></script>
+
+<%- include ("partials/footer") %> 

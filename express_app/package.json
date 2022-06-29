@@ -1,0 +1,38 @@
+{
+  "name": "chainhealth",
+  "version": "1.0.0",
+  "description": "HTTP Service built to bridge OpenEMR services, blockchain and MySignals hardware",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "brokerUp": "bash scripts/mqttBroker.sh up -s 2 -d chainhealth",
+    "brokerDown": "bash scripts/mqttBroker.sh down",
+    "emrUp": "bash scripts/emr.sh up -e 2 -d chainhealth",
+    "emrDown": "bash scripts/emr.sh down",
+    "mongoUp": "bash scripts/mongoDB.sh up",
+    "mongoDown": "bash scripts/mongoDB.sh down",
+    "clean": "bash scripts/cleanContainers.sh"
+  },
+  "author": "Jorge Castillo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.0",
+    "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0",
+    "https": "^1.0.0",
+    "js-yaml": "^3.13.1",
+    "json-hash": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2",
+    "mqtt": "^3.0.0",
+    "os": "^0.1.1",
+    "utils": "^0.3.1",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

@@ -1,0 +1,59 @@
+# All files are automatically generated and configured to follow this main configuration file. Consistency is 
+# the most immportant factor. It is recommended to go over all YAML files
+version: 1
+# Necessary information needed for the application to run properly
+application:
+  # Enable once certificates are in order. Highly required for a production environment
+  tls: false
+  # Typically this will be a domain or IP address and the port to communicate
+  host: ""
+  port: 3000
+  # Secrets needed for authentication mechanics and sessions
+  session_secret: "keyboard cat" 
+  jwt_secret: secretkey
+# Services is where you define the participating organizations in the blockchain. The application supports two main roles.
+#   1) Healthcare: This is the typical medical professional role. Users in this role will be the ones inserting
+#      transactions and also will feel the benefits of blockchain's data integrity feature, more visually.
+#   2) Auditor: This role is used to interact with the data stored in the blockchain. Queries and performance analysis 
+#      are the features of this power user. Auditors can create cross-platform datasets from the blockchain to assess the 
+#      progress of the patients or to improve medical research. 
+services:
+  # Key used for user visualization
+  Hospital_X:
+    # Name on the other hand is used by the system to gather resources (org1-N, where N is the max number of organizations) 
+    name: org1
+    # Field to define domain names or IP addresses to enable communications with the app
+    emr:
+      host: ""
+      address: openemr
+      port: 7080
+    # Similar to EMR but for an MQTT broker
+    broker:
+      tls: true
+      # This path is relative to where it is called. Connected to the mqtt folder.
+      ca_cert_path: "certs0/ca.crt"
+      port: 7883
+    role: 
+      - healthcare
+  Research_Z:
+    name: org2
+    role: 
+      - auditor
+  Clinic_Y:
+    name: org3
+    emr:
+      host: ""
+      address: openemr
+      port: 8080
+    broker:
+      tls: false
+      ca_cert_path: "certs1/ca.crt"
+      port: 8883
+    role: 
+      - healthcare
+  # Blockchain service where medical contract resides
+  Blockchain:
+    host: ""
+    port: 4000
+    bid: "79a548f1677ab665893a686675ec163281315bd0" # Blockchain ID 
+    cid: "3cbc921711515fb6ea1aeb21152d98c216d512a4" # Contract ID

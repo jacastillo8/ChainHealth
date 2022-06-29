@@ -1,0 +1,165 @@
+body {
+    padding-top:50px;
+    background-color: rgb(240, 240, 240);
+    /*background-image: url("/images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+.jumbotron {
+    margin-top: 20px;
+    background-color: rgba(44,62,80,0.8);
+    color: white
+}
+
+.navbar-inverse {
+    background: #2c3e50
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white
+}
+
+.navbar-inverse .navbar-brand {
+    color: white
+}
+
+.circle-icon {
+    background: rgb(163, 162, 162);
+    padding: 5px;
+    border-radius: 30%;
+}
+
+.checkbox-inline.no_indent,
+.checkbox-inline.no_indent+.checkbox-inline.no_indent {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.checkbox-inline.no_indent:last-child {
+  margin-right: 0;
+}
+
+.ui-widget input {
+    font-size: 20px !important;
+}
+
+.spacer {
+    border-bottom: 1px solid rgb(107, 107, 107);
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.hoverable:hover {
+    cursor: pointer;
+    background-color: #b0d3f1;
+}
+
+.panel-heading {
+    text-align: center;
+}
+
+.chart {
+    vertical-align: middle;
+    width: 100%;
+    margin: 5px -5px;
+    position: relative;
+    display: inline-block;
+}
+
+img {
+    width: 70%; 
+    object-fit: cover;
+}
+
+.thumbnail {
+    background-color: rgba(241, 246, 250, 0.8);
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.hidding {
+    display: none;
+}
+
+.timer {
+    float: right;
+}
+
+#patient-data .tab-content {
+    color : black;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid #337ab7;
+    padding : 5px 15px;
+}
+
+#patient-data .nav-pills > li > a {
+    color: black;
+    border-radius: 4px 4px 0 0;
+}
+
+.canvases {
+    width: 47%;
+    text-align: center;
+}
+
+h3 a {
+    font-size: 8px;
+}
+
+.btn-vitals {
+    width: 94%;
+}
+
+.table {
+    font-size: medium;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #2c3e50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #2b343d;}
+
+  .tab {
+      padding-left: 15px;
+  }

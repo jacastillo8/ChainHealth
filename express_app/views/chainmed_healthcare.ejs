@@ -1,0 +1,21 @@
+<%- include ("partials/header") %>
+
+<h1><i class="fas fa-link"></i> ChainMed</h1>
+<br>
+<div class="spacer"></div>
+<br>
+<div>
+    <span class="timer"><strong>Refresh in:</strong> <span id="timer"></span></span>
+    <br>
+    <br>
+    <% transactions.forEach(function(transaction) { %>
+        <% let tx = {title: transaction.title, name: transaction.fname + " " + transaction.lname, dob: transaction.dob, org: transaction.org } %> 
+        <div class="hidding">
+            <pre><%- JSON.stringify(tx, null, 2) %></pre>
+        </div>
+    <% });  %> 
+</div>
+
+<script src="/js/chainmed_healthcare.js" type="text/javascript"></script>
+
+<%- include ("partials/footer") %> 

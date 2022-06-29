@@ -1,0 +1,306 @@
+<%- include ("partials/header") %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+<h1><i class="fas fa-book-medical"></i> Patient Information</h1>
+<div class="spacer"></div>
+<br>
+<input type="hidden" id="pid" value="<%= pid %>">
+<div id="patient-data" class="container">
+    <ul class="nav nav-pills">
+        <% if (tab === 'overview') { %>
+            <li class="active"><a href="#a" data-toggle="tab">Overview</a></li>
+            <li><a href="#b" data-toggle="tab">Insurance</a></li>
+            <li><a href="#c" data-toggle="tab">Vitals</a></li>
+        <% } else if (tab === 'insurance') { %>
+            <li><a href="#a" data-toggle="tab">Overview</a></li>
+            <li class="active"><a href="#b" data-toggle="tab">Insurance</a></li>
+            <li><a href="#c" data-toggle="tab">Vitals</a></li>
+        <% } else if (tab === 'vitals') { %>
+            <li><a href="#a" data-toggle="tab">Overview</a></li>
+            <li><a href="#b" data-toggle="tab">Insurance</a></li>
+            <li class="active"><a href="#c" data-toggle="tab">Vitals</a></li>
+        <% } %>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="a">
+            <br>
+            <div class="hidding">
+                <div>
+                    <strong>Full Name: </strong>
+                    <span id="name"></span>
+                </div>
+                <div>
+                    <strong>Date of Birth: </strong>
+                    <span id="dob"></span>
+                </div>
+                <div>
+                    <strong>Gender: </strong>
+                    <span id="gender"></span>
+                </div>
+                <div>
+                    <strong>Phone Number: </strong>
+                    <span id="phone"></span>
+                </div>
+                <div>
+                    <strong>Address: </strong>
+                    <span id="address"></span>
+                </div>
+                <div>
+                    <strong>Ethnicity: </strong>
+                    <span id="ethnicity"></span>
+                </div>
+                <div>
+                    <strong>Race: </strong>
+                    <span id="race"></span>
+                </div>
+            </div>
+            <br>
+            <div class="hidding">
+                <div class="spacer"></div>
+                <br>
+                <div id="msg_iss"></div>
+                <h3>Medical Conditions <a href="<%= '/patient/issues/' + pid %>">ADD NEW</a></h3>
+                <ol class="problems"></ol>
+            </div>
+            <br>
+            <div class="hidding">
+                <div class="spacer"></div>
+                <br>
+                <div id="msg_all"></div>
+                <h3>Allergies <a href="<%= '/patient/allergies/' + pid %>">ADD NEW</a></h3>
+                <ol class="allergies"></ol>
+            </div>
+            <br>
+            <div class="hidding">
+                <div class="spacer"></div>
+                <br>
+                <div id="msg_med"></div>
+                <h3>Medication History <a href="<%= '/patient/medication/' + pid %>">ADD NEW</a></h3>
+                <ol class="meds"></ol>
+            </div>
+            <br>
+            <div class="hidding">
+                <div class="spacer"></div>
+                <br>
+                <div id="msg_sur"></div>
+                <h3>Surgery History <a href="<%= '/patient/surgeries/' + pid %>">ADD NEW</a></h3>
+                <ol class="surgeries"></ol>
+            </div>
+        </div>
+        <div class="tab-pane" id="b">
+            <div class="primary hidding">
+                <h3>Primary <a id="addnew_p" href="<%= '/patient/insurance/primary/add/' + pid %>">ADD NEW</a> <a id="update_p" href="<%= '/patient/insurance/primary/update/' + pid %>">UPDATE</a></h3>
+                <div>
+                    <strong>Provider: </strong>
+                    <span id="ins_provider"></span>
+                </div>
+                <div>
+                    <strong>Plan Name: </strong>
+                    <span id="ins_plan"></span>
+                </div>
+                <div>
+                    <strong>Policy #: </strong>
+                    <span id="ins_policy"></span>
+                </div>
+                <div>
+                    <strong>Group #: </strong>
+                    <span id="ins_group"></span>
+                </div>
+                <div>
+                    <strong>Policy Type: </strong>
+                    <span id="ins_type"></span>
+                </div>
+                <div>
+                    <strong>Coverage Date: </strong>
+                    <span id="ins_date"></span>
+                </div>
+                <div>
+                    <strong>Copay: </strong>
+                    <span id="ins_copay"></span>
+                </div>
+                <h4><u>Subscriber Information</u></h4>
+                <div class="tab">
+                    <div>
+                        <strong>Name: </strong>
+                        <span id="sub_name"></span>
+                    </div>
+                    <div>
+                        <strong>Relationship: </strong>
+                        <span id="sub_rel"></span>
+                    </div>
+                    <div>
+                        <strong>SSN: </strong>
+                        <span id="sub_ssn"></span>
+                    </div>
+                    <div>
+                        <strong>DOB: </strong>
+                        <span id="sub_dob"></span>
+                    </div>
+                    <div>
+                        <strong>Address: </strong>
+                        <span id="sub_address"></span>
+                    </div>
+                </div>
+                <h4><u>Employer Information</u></h4>
+                <div class="tab">  
+                    <div>
+                        <strong>Name: </strong>
+                        <span id="emp_name"></span>
+                    </div>
+                    <div>
+                        <strong>Address: </strong>
+                        <span id="emp_address"></span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="secondary hidding">
+                <div class="spacer"></div>
+                <h3>Secondary <a id="addnew_s" href="<%= '/patient/insurance/secondary/add/' + pid %>">ADD NEW</a> <a id="update_s" href="<%= '/patient/insurance/secondary/update/' + pid %>">UPDATE</a></h3>
+                <div>
+                    <strong>Provider: </strong>
+                    <span id="ins_provider"></span>
+                </div>
+                <div>
+                    <strong>Plan Name: </strong>
+                    <span id="ins_plan"></span>
+                </div>
+                <div>
+                    <strong>Policy #: </strong>
+                    <span id="ins_policy"></span>
+                </div>
+                <div>
+                    <strong>Group #: </strong>
+                    <span id="ins_group"></span>
+                </div>
+                <div>
+                    <strong>Policy Type: </strong>
+                    <span id="ins_type"></span>
+                </div>
+                <div>
+                    <strong>Coverage Date: </strong>
+                    <span id="ins_date"></span>
+                </div>
+                <div>
+                    <strong>Copay: </strong>
+                    <span id="ins_copay"></span>
+                </div>
+                <h4><u>Subscriber Information</u></h4>
+                <div class="tab">
+                    <div>
+                        <strong>Name: </strong>
+                        <span id="sub_name"></span>
+                    </div>
+                    <div>
+                        <strong>Relationship: </strong>
+                        <span id="sub_rel"></span>
+                    </div>
+                    <div>
+                        <strong>SSN: </strong>
+                        <span id="sub_ssn"></span>
+                    </div>
+                    <div>
+                        <strong>DOB: </strong>
+                        <span id="sub_dob"></span>
+                    </div>
+                    <div>
+                        <strong>Address: </strong>
+                        <span id="sub_address"></span>
+                    </div>
+                </div>
+                <h4><u>Employer Information</u></h4>
+                <div class="tab">  
+                    <div>
+                        <strong>Name: </strong>
+                        <span id="emp_name"></span>
+                    </div>
+                    <div>
+                        <strong>Address: </strong>
+                        <span id="emp_address"></span>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="tab-pane" id="c">
+            <div class="hidding" id="msg_vit"></div>
+            <div class="container hidding">
+                <div>
+                    <a href="<%= '/patient/vitals/' + pid %>">
+                        <button type="button" class="btn btn-primary btn-block btn-vitals" id="btn-vitals">
+                            New Vitals
+                        </button>
+                    </a>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Blood Pressure</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Respirations per Minute</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Oxygen Saturation</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Pulse</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Temperature</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-5 canvases">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Weight</h3>
+                            </div>
+                            <div class="panel-content text-center">
+                                <canvas class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/patient_data_tabs.js"></script>
+
+<%- include ("partials/footer") %> 

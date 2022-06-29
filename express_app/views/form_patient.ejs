@@ -1,0 +1,128 @@
+<%- include ("partials/header") %>
+
+<h1><i class="fas fa-notes-medical"></i> New Patient Information</h1>
+<br>
+<br>
+<form name='info' onsubmit="return formValidation()" method="POST" action="/api/new">
+    <div class='form-row container'>
+        <div id="error"></div>
+        <div class='form-group col-md-6'>
+            <label for="title">Title: </label>
+            <select class="form-control required" id="title" name="title">
+                <option value="">Choose...</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Dr.">Dr.</option>
+            </select>
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="fname">First Name: </label>
+            <input class='form-control required' id="fname" name="fname" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class='form-group col-md-6'>
+            <label for="mname">Middle Name: </label>
+            <input class='form-control' id="mname" name="mname" type='text' autocomplete="off">
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="lname">Last Name: </label>
+            <input class='form-control required' id='lname' name="lname" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class='form-group col-md-6'>
+            <label for="street">Street: </label>
+            <input class='form-control required' id='street' name="street" type='text' autocomplete="off">
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="postalcode">Postal Code: </label>
+            <input class='form-control required' id="postalcode" name="postalcode" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class='form-group col-md-6'>
+            <label for="city">City: </label>
+            <input class='form-control required' id='city' name="city" type='text' autocomplete="off">
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="state">State: </label>
+            <input class='form-control required' id='state' name="state" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class='form-row container'>
+        <div class='form-group col-md-6'>
+            <label for="countrycode">Country Code: </label>
+            <input class='form-control required' id="countrycode" name="countrycode" type='text' placeholder="US" value="US" autocomplete="off">
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="phone">Phone Contact: </label>
+            <input class='form-control required' id="phone" name="phone" type='text' autocomplete="off">
+        </div>
+    </div>
+    <div class='form-row container'>
+        <div class='form-group col-md-6'>
+            <label for="dob">DOB: </label>
+            <div class="input-group date" id="datetimepicker">
+                <input class='form-control required' id="dob" name="dob" placeholder="MM/DD/YYYY" type='text' readonly>
+                <span class="input-group-addon"> 
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class='form-group col-md-6'>
+            <label for="sex">Sex: </label>
+            <select class="form-control required" id="sex" name="sex">
+                <option value="">Choose...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class='form-group col-md-6'>
+            <label for="ethnicity">Are you Hispanic/Latino? </label>
+            <select class="form-control required" id="ethnicity" name="ethnicity">
+                <option value="">Choose...</option>
+                <option value="Hispanic">Yes</option>
+                <option value="Not Hispanic">No</option>
+            </select>
+        </div>
+        <div class='form-group col-md-6' id="checkboxes">
+            <label for="races">Race (select one or more): </label>
+            <div id="races">
+                <label class="checkbox-inline no_indent">
+                    <input type="checkbox" name="races" value="White">White
+                </label>
+                <label class="checkbox-inline no_indent">
+                    <input type="checkbox" name="races" value="Black">Black
+                </label>
+                <label class="checkbox-inline no_indent">
+                    <input type="checkbox" name="races" value="Asian">Asian
+                </label>
+                <label class="checkbox-inline no_indent">
+                    <input type="checkbox" name="races" value="American Indian/Alaska Native">American Indian/Alaska Native
+                </label>
+                <label class="checkbox-inline no_indent">
+                    <input type="checkbox" name="races" value="Hawaiian/Pacific Islander">Hawaiian/Pacific Islander
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-12">
+            <button type='submit' class="btn btn-success btn-block">Submit</button>
+        </div>
+    </div>
+    <div class="form-row container">
+        <div class="form-group col-md-12">
+            <button type="button" class="btn btn-danger btn-block" id="reset">Reset Form</button>
+        </div>
+    </div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/new_patient.js"></script>
+
+<%- include ("partials/footer") %> 
