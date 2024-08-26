@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "ChainHealth_API",
+		"name": "MediLink_API",
 		"_postman_id": "5ce1949d-f55c-84f4-d234-3b764c8303c1",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
