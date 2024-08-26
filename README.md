@@ -1,11 +1,11 @@
-# ChainHealth
-This repository contains the necessary components to instantiate ChainHealth application. ChainHealth is a blockchain-based web application that integrates multiple instances of Electronic Medical Records (EMRs) and IoT devices (MySignals) with blockchain technology. 
+# MediLink
+This repository contains the necessary components to instantiate MediLink application. MediLink is a blockchain-based web application that integrates multiple instances of Electronic Medical Records (EMRs) and IoT devices (MySignals) with blockchain technology. 
 <p align="center">
-  <img width="460" height="350" src="./chainhealth_overview.jpg">
+  <img width="460" height="350" src="./overview.jpg">
 </p>
 
 ## Getting Started
-* Optional: Although IoT devices are not needed to operate ChainHealth, you can deploy the [MySignals](http://www.my-signals.com/) IoT prototype and its components by following the steps shown [here](./mysignals_hardware/).
+* Optional: Although IoT devices are not needed to operate MediLink, you can deploy the [MySignals](http://www.my-signals.com/) IoT prototype and its components by following the steps shown [here](./mysignals_hardware/).
 
 1. Install the following software and packages:
     - Docker & Docker Compose.
@@ -15,30 +15,30 @@ This repository contains the necessary components to instantiate ChainHealth app
         - argparse.
 1. Clone and deploy [Blockchain_Manager](https://github.com/jacastillo8/Blockchain_Manager) tool.
 1. Move `medical_contract` folder to `Blockchain_Manager/blockchain_base/chaincode` so that the smart contract can be properly instantiated in the blockchain.
-1. Load collection `postman_collection_chainhealth` into Postman.
-    - Register ChainHealth blockchain (`Register`), which includes 3 organizations denoted as Hospital X, Clinic Y and Research Z.
-    - Build ChainHealth blockchain (`Build`). Large blockchains may require larger times to deploy, thus, to avoid sending multiple build requests while waiting, just cancel the request after sending it. The blockchain will continue to deploy in the background. 
+1. Load collection `postman_collection_medilink` into Postman.
+    - Register MediLink blockchain (`Register`), which includes 3 organizations denoted as Hospital X, Clinic Y and Research Z.
+    - Build MediLink blockchain (`Build`). Large blockchains may require larger times to deploy, thus, to avoid sending multiple build requests while waiting, just cancel the request after sending it. The blockchain will continue to deploy in the background. 
 1. Navigate to `express_app` folder and install node dependencies.
     ```bash
     cd express_app
     npm install
     ```
 1. Add/modify information from `config.yaml` (found inside `express_app`), i.e., change host/port values for each component, etc. The current file matches the number of organizations of the built blockchain. 
-1. You are now ready to deploy ChainHealth.
+1. You are now ready to deploy MediLink.
 
-### NPM commands to deploy ChainHealth components
+### NPM commands to deploy MediLink components
 ```bash
-# To run ChainHealth Service
-npm run mongoUp        # Generates MongoDB container to store chainhealth assets
+# To run MediLink Service
+npm run mongoUp        # Generates MongoDB container to store MediLink assets
 npm run emrUp          # Generates 2 EMR containers, i.e., OpenEMR 
 npm run brokerUp       # Generates 2 Mosquitto MQTT brokers (one for each EMR)
-npm start              # Starts ChainHealth service
+npm start              # Starts MediLink service
 # Remove all containers
 npm run clean
 ```
 
 ### EMR prior configuration
-To enable proper communication between an EMR instance ([OpenEMR](https://www.open-emr.org/)) and ChainHealth you are required to do the following:
+To enable proper communication between an EMR instance ([OpenEMR](https://www.open-emr.org/)) and MediLink you are required to do the following:
 * Note that you are required to follow these steps for each of the EMR containers in the network.
 1. Navigate to the EMR website, i.e., `http://X.X.X.X:Y/openemr`, where X.X.X.X denotes the assigned IP address for that particular EMR and Y indicates its port. 
 1. Click on `Proceed to Step 1`.
@@ -53,4 +53,4 @@ To enable proper communication between an EMR instance ([OpenEMR](https://www.op
     - Input username and password. 
     - Go to Administration -> Globals -> Connectors and select **Enable OpenEMR REST API**. 
     - Click Save and proceed to exit OpenEMR since we no longer need to directly interact with it.
-1. You now can interact with the ChainHealth service by navigating to `http://X.X.X.X:3000`.
+1. You now can interact with the MediLink service by navigating to `http://X.X.X.X:3000`.
