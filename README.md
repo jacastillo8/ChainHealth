@@ -15,7 +15,7 @@ This repository contains the necessary components to instantiate MediLink applic
         - argparse.
 1. Clone and deploy [Blockchain_Manager](https://github.com/jacastillo8/Blockchain_Manager) tool.
 1. Move `medical_contract` folder to `Blockchain_Manager/blockchain_base/chaincode` so that the smart contract can be properly instantiated in the blockchain.
-1. Load collection `postman_collection_medilink` into Postman.
+1. Load collection `postman_collection` into Postman.
     - Register MediLink blockchain (`Register`), which includes 3 organizations denoted as Hospital X, Clinic Y and Research Z.
     - Build MediLink blockchain (`Build`). Large blockchains may require larger times to deploy, thus, to avoid sending multiple build requests while waiting, just cancel the request after sending it. The blockchain will continue to deploy in the background. 
 1. Navigate to `express_app` folder and install node dependencies.
